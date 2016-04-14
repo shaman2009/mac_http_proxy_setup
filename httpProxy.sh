@@ -1,4 +1,6 @@
 #!/bin/bash
+# if ur proxy server is jenkins.nanchao.org:7777
+# sudo /yourfilelocation/httpProxy.sh Wi-Fi jenkins.nanchao.org 7777
 
 network=$1
 httpproxy=$2
