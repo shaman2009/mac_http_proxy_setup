@@ -2,7 +2,7 @@
 #https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man8/networksetup.8.html
 
 
-network="LAN"
+network="Wi-Fi"
 httpproxy="jenkins.nanchao.org"
 port="7777"
 switch=$1
