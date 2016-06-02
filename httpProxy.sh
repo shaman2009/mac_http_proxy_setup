@@ -1,13 +1,22 @@
 #!/bin/bash
-# if ur proxy server is jenkins.nanchao.org:7777
-# sudo /yourfilelocation/httpProxy.sh Wi-Fi jenkins.nanchao.org 7777
+#https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man8/networksetup.8.html
 
-network=$1
-httpproxy=$2
-port=$3
-if [ "$network" = "" ]
+
+network="LAN"
+httpproxy="jenkins.nanchao.org"
+port="7777"
+switch=$1
+
+
+
+if [ "$switch" = "close" ]
 then 
-    echo param error
+    networksetup -setwebproxystate $network off
+    networksetup -setsecurewebproxystate $network off
+    networksetup -setproxybypassdomains $network Empty
+    networksetup -setautoproxystate $network off
+    networksetup -setsocksfirewallproxystate $network off
+    echo successfully shutdown proxy
 else 
     networksetup -setwebproxy $network $httpproxy $port off
     networksetup -setsecurewebproxy $network $httpproxy $port off
@@ -16,3 +25,7 @@ else
     networksetup -setsocksfirewallproxystate $network off
     echo successfully setup proxy
 fi
+
+
+
+
